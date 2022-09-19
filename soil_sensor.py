@@ -4,7 +4,7 @@ import utime
 
 # initialize vars
 led_onboard = Pin(25, Pin.OUT)
-led_external = Pin(15, Pin.OUT, Pin.PULL_DOWN)
+led_external = Pin(15, Pin.OUT)
 moisture_sensor = ADC(28)
 conversion_factor = 3.3/65535
 dry_soil_alert_value = 1.4
@@ -17,6 +17,8 @@ while True:
     # check the sensor
     sensor_reading = moisture_sensor.read_u16()
     converted_reading = sensor_reading * conversion_factor
+
+    # print the reading in the shell area in Thonny
     print(converted_reading)
 
     # if below threshold, turn on water indicator
